@@ -1,0 +1,47 @@
+.banner {
+    background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(../../assets/banner.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 390px;
+    margin-bottom: 2rem;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        height: 100%;
+
+        .banner-content {
+            max-width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            
+            h1 {
+                font-size: 3rem;
+                font-weight: 600;
+                line-height: 3.25rem;
+            }
+
+            p {
+                font-size: 2.0rem;
+
+                strong {
+                    font-weight: 700;
+                    color: #F7CA11;
+                }
+            }
+
+            a {
+                padding: 1rem 3.25rem;
+                background-color: #F7CA11;
+                width: fit-content;
+                border-radius: 5px;
+                color: #271C47;
+                font-weight: 600;
+            }
+        }
+    }
+}

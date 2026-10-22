@@ -1,3 +1,4 @@
+import { Banner } from "./components/Banner/Banner"
 import { Header } from "./components/Header/Header"
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
     <>
       <Header />
       <main>
-        <h1>Econverse</h1>
+        <Banner />
       </main>
     </>
   )
