@@ -1,0 +1,123 @@
+.header-benefits {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #F0F0F0;
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 0.75rem 0;
+
+        &.shield::before {
+            content: url('../../assets/Header/shield.svg');
+        }
+
+        &.truck::before {
+            content: url('../../assets/Header/truck.svg');
+        }
+
+        &.card::before {
+            content: url('../../assets/Header/card.svg');
+        }
+
+        strong {
+            color: #3019B2;
+            font-size: inherit;
+        }
+    }
+}
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1rem;
+    border-bottom: 1px solid #F0F0F0;
+
+    .logo {
+        img {
+            width: 150px;
+        }
+    }
+
+    .search {
+        flex: 1;
+
+        .search-wrapper {
+            width: 70%;
+            margin: 0 auto;
+            position: relative;
+
+            .search-input {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                padding-right: 3rem;
+                background-color: #F6F5F2;
+                border: 0;
+                border-radius: 8px;
+
+                &::placeholder {
+                    color: #9F9F9F;
+                }
+            }
+
+            .search-button {
+                position: absolute;
+                top: 50%;
+                right: 1rem;
+                transform: translateY(-50%);
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .links {
+        display: flex;
+        gap: 2rem;
+    }
+}
+
+.header-bottom {
+    .categories {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        gap: 3rem;
+        padding: 1rem 2rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        box-shadow: 0px 5px 10px 0px #3930131F;
+
+        li {
+            position: relative;
+            a {
+                text-decoration: none;
+                color: #9f9f9f;
+                font-weight: 500;
+                text-transform: uppercase;
+
+                &:hover {
+                    color: #3019B2;
+                }
+
+                &.active {
+                    color: #3019B2;
+                }
+            }
+
+            &:last-child::before {
+                content: url('../../assets/Header/crown.svg');
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                left: -1.5rem;
+            }
+        }
+    }
+}
