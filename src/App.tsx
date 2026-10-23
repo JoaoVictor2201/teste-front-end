@@ -6,6 +6,7 @@ import type { Product } from "./types/product"
 import { getProducts } from "./services/products"
 import { ProductCarousel } from "./components/ProductCarousel/ProductCarousel"
 import { ProductModal } from "./components/ProductModal/ProductModal"
+import { Partners } from "./components/Partners/Partners"
 
 function App() {
   const [products, setProducts] = useState<Product[]>([])
@@ -54,6 +55,16 @@ function App() {
         {selectedProduct && (
           <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
         )}
+        <Partners />
+        {loading && <p>Carregando produtos...</p>}
+        {error && <p>Erro ao carregar produtos: {error}</p>}
+        {!loading && !error && (
+          <div className="container">
+            <h2 className="section-title" id="produtos">Produtos relacionados</h2>
+            <ProductCarousel products={products} onSelect={setSelectedProduct} />
+          </div>
+        )}
+        <Partners />
       </main>
     </>
   )
