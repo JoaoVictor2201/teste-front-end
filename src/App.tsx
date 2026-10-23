@@ -1,16 +1,41 @@
+import { useState, useEffect } from "react"
 import { Banner } from "./components/Banner/Banner"
 import { Categories } from "./components/Categories/Categories"
 import { Header } from "./components/Header/Header"
-import { ProductCard } from "./components/ProductCard/ProductCard"
 import type { Product } from "./types/product"
+import { getProducts } from "./services/products"
+import { ProductCarousel } from "./components/ProductCarousel/ProductCarousel"
+import { ProductModal } from "./components/ProductModal/ProductModal"
 
 function App() {
-  const product: Product = {
-    "productName": "IPHONE 13 MINI 4",
-    "descriptionShort": "IPHONE 13 MINI 4",
-    "photo": "https://app.econverse.com.br/teste-front-end/junior/tecnologia/fotos-produtos/foto-iphone.png",
-    "price": 520
-  }
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+  useEffect(() => {
+    let ignore = false
+    const loadProducts = async () => {
+      try {
+        const result = await getProducts()
+        if (!ignore) {
+          setProducts(result)
+        }
+      } catch (err) {
+        if (!ignore) {
+          setError((err as Error).message)
+        }
+      } finally {
+        if (!ignore) {
+          setLoading(false)
+        }
+      }
+    }
+    loadProducts()
+    return () => {
+      ignore = true
+    }
+  }, [])
 
   return (
     <>
@@ -18,7 +43,17 @@ function App() {
       <main>
         <Banner />
         <Categories />
-        <ProductCard product={product} />
+        {loading && <p>Carregando produtos...</p>}
+        {error && <p>Erro ao carregar produtos: {error}</p>}
+        {!loading && !error && (
+          <div className="container">
+            <h2 className="section-title" id="produtos">Produtos relacionados</h2>
+            <ProductCarousel products={products} onSelect={setSelectedProduct} />
+          </div>
+        )}
+        {selectedProduct && (
+          <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+        )}
       </main>
     </>
   )

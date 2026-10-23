@@ -1,0 +1,32 @@
+.products-carousel {
+    display: flex;
+
+    .products-list {
+        display: flex;
+        flex: 1;
+        min-width: 0;
+        padding-block: 1rem;
+        list-style: none;
+        gap: 1rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+
+        li {
+            flex: 0 0 calc((100% - 3rem) / 4);
+            min-width: 0;
+            display: flex;
+        }
+    }
+
+    > button {
+        align-self: center;
+    }
+
+    .carousel-btn {
+        border: 0;
+        padding: 0.5rem .75rem;
+        border-radius: 50%;
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+        background-color: #fff;
+    }
+}
